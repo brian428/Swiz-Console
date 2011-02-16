@@ -11,7 +11,7 @@
 			import mx.events.ItemClickEvent;
 			import mx.events.ListEvent;
 			
-			import org.swizframework.console.processors.InspectionLookup;
+			import org.swizframework.console.util.InspectionLookup;
 			import org.swizframework.console.util.FormatUtils;
 			import org.swizframework.core.Bean;
 			

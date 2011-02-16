@@ -14,6 +14,7 @@ package org.swizframework.console.processors
 	import org.swizframework.processors.EventHandlerProcessor;
 	import org.swizframework.reflection.IMetadataTag;
 	import org.swizframework.utils.event.EventHandler;
+	import org.swizframework.console.util.InspectionLookup;
 
 	public class InspectableEventHandlerProcessor extends EventHandlerProcessor
 	{

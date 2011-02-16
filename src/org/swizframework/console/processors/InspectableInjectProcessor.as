@@ -8,6 +8,7 @@ package org.swizframework.console.processors
 	import org.swizframework.metadata.InjectMetadataTag;
 	import org.swizframework.processors.InjectProcessor;
 	import org.swizframework.reflection.IMetadataTag;
+	import org.swizframework.console.util.InspectionLookup;
 
 	public class InspectableInjectProcessor extends InjectProcessor
 	{

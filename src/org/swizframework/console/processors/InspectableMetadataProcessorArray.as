@@ -1,6 +1,5 @@
 package org.swizframework.console.processors
 {
-
 	public dynamic class InspectableMetadataProcessorArray extends Array
 	{
 

@@ -1,4 +1,4 @@
-package org.swizframework.console.processors
+package org.swizframework.console.util
 {
 	import mx.collections.ArrayCollection;
 	import mx.events.CollectionEvent;

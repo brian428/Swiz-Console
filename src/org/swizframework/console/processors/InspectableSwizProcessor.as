@@ -3,6 +3,7 @@ package org.swizframework.console.processors
 	import org.swizframework.core.ISwiz;
 	import org.swizframework.core.SwizManager;
 	import org.swizframework.processors.BaseMetadataProcessor;
+	import org.swizframework.console.util.InspectionLookup;
 
 	public class InspectableSwizProcessor extends BaseMetadataProcessor
 	{
