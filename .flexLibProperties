@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" version="3">
+  <includeClasses>
+    <classEntry path="org.swizframework.console.SwizConsole"/>
+    <classEntry path="org.swizframework.console.SwizConsoleVersion"/>
+    <classEntry path="org.swizframework.console.view.SwizConsoleView"/>
+    <classEntry path="org.swizframework.console.view.SwizInspector"/>
+    <classEntry path="org.swizframework.console.view.EventHandlerView"/>
+    <classEntry path="org.swizframework.console.view.EventFlowView"/>
+    <classEntry path="org.swizframework.console.logging.KapITSwizLogger"/>
+    <classEntry path="org.swizframework.console.logging.KapITSwizLoggingTarget"/>
+    <classEntry path="org.swizframework.console.logging.KapITSwizLogEvent"/>
+    <classEntry path="org.swizframework.console.processors.InspectablePostConstructProcessor"/>
+    <classEntry path="org.swizframework.console.processors.InspectableSwizProcessor"/>
+    <classEntry path="org.swizframework.console.view.BeansView"/>
+    <classEntry path="org.swizframework.console.view.SwizInstanceView"/>
+    <classEntry path="org.swizframework.console.view.SwizViewsWiredView"/>
+    <classEntry path="org.swizframework.console.processors.InspectableInjectProcessor"/>
+    <classEntry path="org.swizframework.console.view.InjectionsView"/>
+    <classEntry path="org.swizframework.console.processors.InspectablePreDestroyProcessor"/>
+    <classEntry path="org.swizframework.console.processors.InspectableDispatcherProcessor"/>
+    <classEntry path="org.swizframework.console.processors.InspectableSwizInterfaceProcessor"/>
+    <classEntry path="org.swizframework.console.view.MultiDomainIntrospectionTree"/>
+    <classEntry path="org.swizframework.console.introspection.MultiDomainClassDescriptor"/>
+    <classEntry path="org.swizframework.console.introspection.MultiDomainClassUtils"/>
+    <classEntry path="org.swizframework.console.util.FormatUtils"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

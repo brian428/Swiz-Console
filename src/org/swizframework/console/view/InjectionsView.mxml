@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:containers="fr.kapit.containers.*"
+		 xmlns:controls="fr.kapit.controls.*"
+		 xmlns:mx="http://www.adobe.com/2006/mxml"
+		 xmlns:tree="fr.kapit.tree.*">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.binding.utils.ChangeWatcher;
+			import mx.collections.ArrayCollection;
+			import mx.events.ItemClickEvent;
+			import mx.events.ListEvent;
+			
+			import org.swizframework.console.processors.InspectionLookup;
+			import org.swizframework.console.util.FormatUtils;
+			import org.swizframework.core.Bean;
+			
+			private function displayNameLabelFunction( item : Object, column : DataGridColumn ) : String
+			{
+				return FormatUtils.formatUID( item.bean.source, 2, 3 );
+			}
+			
+			private function bindLabelFunction( item : Object, column : DataGridColumn ) : String
+			{
+				return item.changeWatcher is ChangeWatcher ? "Yes" : "No";
+			}
+			
+			private function onChange( event : ListEvent ) : void
+			{
+				var item : Object = injectionsGrid.selectedItem;
+				if ( hasEventListener( "change" ) )
+				{
+					dispatchEvent( event.clone() );
+					return
+				}
+				
+				if ( item )
+				{
+					debugComponent.setRoot( item, "Inject Information" );
+				}
+			}
+
+		]]>
+	</mx:Script>
+	
+	<containers:kHDividedBox height="100%" width="100%">
+		
+		<controls:kDataGrid id="injectionsGrid"
+							height="100%"
+							width="60%"
+							dataProvider="{InspectionLookup.INJECTIONS}"
+							change="onChange( event )">
+			<controls:columns>
+				<mx:DataGridColumn labelFunction="displayNameLabelFunction" headerText="Injection Target" />
+				<mx:DataGridColumn dataField="asTag" headerText="Inject Tag" />
+				<mx:DataGridColumn dataField="property" headerText="Property Name" />
+				<mx:DataGridColumn dataField="type" headerText="Property Type" />
+				<mx:DataGridColumn dataField="value" headerText="Injected Value" />
+				<mx:DataGridColumn labelFunction="bindLabelFunction" headerText="Binding?" width="60" />
+			</controls:columns>
+		</controls:kDataGrid>
+		
+		<tree:DebugComponent id="debugComponent" height="100%" width="40%" />
+		
+	</containers:kHDividedBox>
+	
+</mx:VBox>

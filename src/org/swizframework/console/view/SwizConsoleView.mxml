@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<components:KapITPopupWindow xmlns:components="fr.kapit.components.*"
+							 xmlns:mx="http://www.adobe.com/2006/mxml"
+							 xmlns:s="library://ns.adobe.com/flex/spark"
+							 xmlns:view="org.swizframework.console.view.*"
+							 styleName="popupStyle"
+							 creationComplete="onCreationComplete()"
+							 applicationName="Swiz Console"
+							 implements="fr.kapit.popup.IPopupView"
+							 titleStyleName="popupTitle">
+
+	<mx:Style>
+		.popupStyle
+		{
+			borderThicknessBottom:1;
+			borderThicknessLeft:1;
+			borderThicknessRight:1;
+			paddingLeft:0;
+			paddingTop:0;
+			paddingBottom:0;
+			paddingRight:0;
+		}
+		
+		.popupTitle
+		{
+			color:#ffffff;
+			fontSize:14;
+			fontWeight:bold;
+			fontFamily:Arial;
+		}
+		
+		.kComboBox
+		{
+			contentBackgroundAlpha:1;
+		}
+	</mx:Style>
+
+	<mx:Script>
+		<![CDATA[
+			import mx.managers.PopUpManager;
+			import fr.kapit.popup.AboutBox;
+			import fr.kapit.utils.ApplicationUtils;
+			import org.swizframework.console.SwizConsoleVersion;
+
+			public function addCustomView( strName : String ) : void
+			{
+				if ( inspector )
+					inspector.addTab( strName );
+			}
+
+			public function addModule( strName : String ) : void
+			{
+				if ( inspector )
+					inspector.addTab( strName );
+			}
+
+			override protected function showAbout() : void
+			{
+				var popup : AboutBox = new AboutBox()
+				popup.applicationName = applicationName
+				popup.versionNumber = SwizConsoleVersion.VERSION_NUMBER
+				popup.buildNumber = SwizConsoleVersion.BUILD_NUMBER
+				PopUpManager.addPopUp( popup, ApplicationUtils.application );
+				PopUpManager.centerPopUp( popup )
+			}
+
+			private function onCreationComplete() : void
+			{
+				title = "Kap IT console for Swiz";
+			}
+		]]>
+	</mx:Script>
+
+	<view:SwizInspector id="inspector" height="100%" width="100%" />
+
+</components:KapITPopupWindow>

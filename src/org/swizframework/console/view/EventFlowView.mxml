@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<containers:kVDividedBox xmlns:components="fr.kapit.components.*"
+						 xmlns:containers="fr.kapit.containers.*"
+						 xmlns:controls="fr.kapit.controls.*"
+						 xmlns:mx="http://www.adobe.com/2006/mxml"
+						 xmlns:tree="fr.kapit.tree.*">
+
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.events.ItemClickEvent;
+			import mx.events.ListEvent;
+			
+			import org.swizframework.console.processors.InspectionLookup;
+			import org.swizframework.console.util.FormatUtils;
+			
+			private function displayNameLabelFunction( item : Object, column : DataGridColumn ) : String
+			{
+				return FormatUtils.formatUID( item.bean, 2, 3 );
+			}
+			
+			private function onChange( event : ListEvent ) : void
+			{
+				var item : Object = eventFlowGrid.selectedItem;
+				if ( hasEventListener( "change" ) )
+				{
+					dispatchEvent( event.clone() );
+					return
+				}
+
+				if ( item )
+				{
+					debugComponent.setRoot( { event: item.event, bean: item.bean, _handlerName: item.handlerName, _metadataTag: item.tag }, "EventHandler Information" );
+					stackGrid.callStack = item.callStack;
+				}
+			}
+			
+		]]>
+	</mx:Script>
+
+	<containers:kHDividedBox height="80%" width="100%">
+
+		<controls:kDataGrid id="eventFlowGrid"
+							height="100%"
+							width="60%"
+							dataProvider="{InspectionLookup.EVENT_HANDLER_FLOW}"
+							change="onChange( event )">
+			<controls:columns>
+				<mx:DataGridColumn dataField="number" headerText=" # " width="30" />
+				<mx:DataGridColumn dataField="eventClass" headerText="Event Class" />
+				<mx:DataGridColumn dataField="eventTypeLiteral" headerText="Event Type" />
+				<mx:DataGridColumn dataField="tag" headerText="Metadata Tag" />
+				<mx:DataGridColumn labelFunction="displayNameLabelFunction" headerText="Bean" />
+				<mx:DataGridColumn dataField="handlerName" headerText="Method Name" />
+			</controls:columns>
+		</controls:kDataGrid>
+
+		<tree:DebugComponent id="debugComponent" height="100%" width="40%" />
+
+	</containers:kHDividedBox>
+
+	<components:StackDataGrid id="stackGrid" height="20%" width="100%" />
+
+</containers:kVDividedBox>

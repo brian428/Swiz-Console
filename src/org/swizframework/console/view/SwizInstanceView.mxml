@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:containers="fr.kapit.containers.*"
+		 xmlns:controls="fr.kapit.controls.*"
+		 xmlns:mx="http://www.adobe.com/2006/mxml"
+		 xmlns:tree="fr.kapit.tree.*">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.events.ItemClickEvent;
+			import mx.events.ListEvent;
+			
+			import org.swizframework.console.processors.InspectionLookup;
+			import org.swizframework.console.util.FormatUtils;
+			
+			private function swizDispatcherLabelFunction( item : Object, column : DataGridColumn ) : String
+			{
+				return FormatUtils.formatUID( item.dispatcher, 4, 7 );
+			}
+			
+			private function onChange( event : ListEvent ) : void
+			{
+				var item : Object = beanGrid.selectedItem;
+				if ( hasEventListener( "change" ) )
+				{
+					dispatchEvent( event.clone() );
+					return
+				}
+				
+				if ( item )
+				{
+					debugComponent.setRoot( item, "Swiz Instance Information" );
+				}
+			}
+
+		]]>
+	</mx:Script>
+	
+	<containers:kHDividedBox height="100%" width="100%">
+		
+		<controls:kDataGrid id="beanGrid"
+							height="100%"
+							width="60%"
+							dataProvider="{InspectionLookup.SWIZ_INSTANCES}"
+							change="onChange( event )">
+			<controls:columns>
+				<mx:DataGridColumn labelFunction="swizDispatcherLabelFunction" headerText="Swiz Dispatcher" />
+			</controls:columns>
+		</controls:kDataGrid>
+		
+		<tree:DebugComponent id="debugComponent" height="100%" width="40%" />
+		
+	</containers:kHDividedBox>
+	
+	
+	
+</mx:VBox>

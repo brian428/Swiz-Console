@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:containers="fr.kapit.containers.*"
+		 xmlns:controls="fr.kapit.controls.*"
+		 xmlns:mx="http://www.adobe.com/2006/mxml"
+		 xmlns:tree="fr.kapit.tree.*"
+		 show="onShow()">
+
+	<mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.events.ItemClickEvent;
+			import mx.events.ListEvent;
+			import org.swizframework.console.processors.InspectionLookup;
+
+			private function beanNameLabelFunction( item : Object, column : DataGridColumn ) : String
+			{
+				return item.name;
+			}
+
+			private function beanSourceLabelFunction( item : Object, column : DataGridColumn ) : String
+			{
+				return item.source.toString();
+			}
+			
+			private function onShow() : void
+			{
+				InspectionLookup.updateBeanList();
+			}
+			
+			private function onChange( event : ListEvent ) : void
+			{
+				var item : Object = beanGrid.selectedItem;
+				if ( hasEventListener( "change" ) )
+				{
+					dispatchEvent( event.clone() );
+					return
+				}
+
+				if ( item )
+				{
+					debugComponent.setRoot( item, "Bean Information" );
+				}
+			}
+
+		]]>
+	</mx:Script>
+
+	<containers:kHDividedBox height="100%" width="100%">
+
+		<controls:kDataGrid id="beanGrid"
+							height="100%"
+							width="60%"
+							dataProvider="{InspectionLookup.BEAN_LIST}"
+							change="onChange( event )">
+			<controls:columns>
+				<mx:DataGridColumn labelFunction="beanNameLabelFunction" headerText="Bean Name" />
+				<mx:DataGridColumn labelFunction="beanSourceLabelFunction" headerText="Bean Source" />
+			</controls:columns>
+		</controls:kDataGrid>
+
+		<tree:DebugComponent id="debugComponent" height="100%" width="40%" />
+
+	</containers:kHDividedBox>
+
+</mx:VBox>
