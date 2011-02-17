@@ -67,8 +67,16 @@ package org.swizframework.console.processors
 			}
 
 			var injectData : Object = findInjectData( destObject, destPropName );
-			injectData.value = destObject[destPropName];
 			injectData.changeWatcher = changeWatcher;
+			
+			try
+			{
+				injectData.value = destObject[destPropName];
+			}
+			catch( e : Error )
+			{
+				injectData.value = "N/A (Cannot invoke getter)";
+			}
 		}
 
 		override protected function setDestinationValue( injectTag : InjectMetadataTag, bean : Bean, value : * ) : void
