@@ -24,6 +24,7 @@
     <classEntry path="org.swizframework.console.introspection.MultiDomainClassDescriptor"/>
     <classEntry path="org.swizframework.console.introspection.MultiDomainClassUtils"/>
     <classEntry path="org.swizframework.console.util.FormatUtils"/>
+    <classEntry path="org.swizframework.console.view.LogLevelDataGridRenderer"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
