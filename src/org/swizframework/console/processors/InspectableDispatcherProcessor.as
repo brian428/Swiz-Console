@@ -29,7 +29,10 @@ package org.swizframework.console.processors
 		override public function setUpMetadataTags( metadataTags : Array, bean : Bean ) : void
 		{
 			super.setUpMetadataTags( metadataTags, bean );
-			logger.info( "[Dispatcher] injected to bean: " + bean.toString() );
+			if( metadataTags.length > 0 )
+			{
+				logger.info( "[Dispatcher] injected to bean: " + bean.toString() );
+			}	
 		}
 	}
 }
