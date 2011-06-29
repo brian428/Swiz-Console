@@ -9,6 +9,7 @@
 	<component class="org.swizframework.console.processors.InspectablePreDestroyProcessor" />
 	<component class="org.swizframework.console.processors.InspectableSwizInterfaceProcessor" />
 	<component class="org.swizframework.console.processors.InspectableSwizProcessor" />
+	<component class="org.swizframework.console.processors.InspectableViewProcessor" />
 	<component class="org.swizframework.console.logging.KapITSwizLoggingTarget" />
 	
 </componentPackage>
