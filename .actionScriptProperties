@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<actionScriptProperties analytics="false" mainApplicationPath="SwizConsole.as" projectUUID="9401c3c1-033d-4611-a3bd-db1378ad6b5f" version="6">
-  <compiler additionalCompilerArguments="-locale en_US -define=CONFIG::flex3,false -define=CONFIG::flex4,true -keep-as3-metadata+=Inject,Autowire,Mediate,EventHandler,Dispatcher,PostConstruct,PreDestroy" autoRSLOrdering="true" copyDependentFiles="false" fteInMXComponents="false" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="false" htmlHistoryManagement="false" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" verifyDigests="true" warn="true">
+<actionScriptProperties analytics="false" mainApplicationPath="SwizConsole.as" projectUUID="9401c3c1-033d-4611-a3bd-db1378ad6b5f" version="10">
+  <compiler additionalCompilerArguments="-define=CONFIG::flex3,false -define=CONFIG::flex4,true -keep-as3-metadata+=Inject,Autowire,Mediate,EventHandler,Dispatcher,PostConstruct,PreDestroy,ViewAdded,ViewRemoved" autoRSLOrdering="true" copyDependentFiles="false" fteInMXComponents="false" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="false" htmlHistoryManagement="false" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin" removeUnusedRSL="true" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" verifyDigests="true" warn="true">
     <compilerSourcePath/>
     <libraryPath defaultLinkType="0">
       <libraryPathEntry kind="4" path="">
         <excludedEntries>
-          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/flex.swc" useDefaultLinkType="false"/>
+          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/core.swc" useDefaultLinkType="false"/>
         </excludedEntries>
       </libraryPathEntry>
       <libraryPathEntry kind="3" linkType="1" path="/KapDebugComponents/bin/KapDebugComponents.swc" useDefaultLinkType="false"/>
@@ -24,4 +24,5 @@
   </applications>
   <modules/>
   <buildCSSFiles/>
+  <flashCatalyst validateFlashCatalystCompatibility="false"/>
 </actionScriptProperties>
