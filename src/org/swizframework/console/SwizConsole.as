@@ -33,6 +33,7 @@ package org.swizframework.console
 	
 	public class SwizConsole extends PopupLoader
 	{
+		
 		public static const NAME:String = "SwizConsole";
 		
 		public function SwizConsole()

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="SwizConsole" default="build" basedir="C:/Developer/flex/projects/SwizConsole">
+
+	<property name="CONSOLE_VERSION" value="1.1.0" />
+	<property name="FLEX_HOME" value="C:/Developer/IDE/Flex/FlashBuilder_45_307554/Adobe Flash Builder 4.5/sdks/4.5.0"/>
+	<property name="SDK_VERSION" value="4.5.0.20834"/>
+
+	<taskdef name="mxmlc" classname="flex.ant.MxmlcTask" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+	<taskdef name="compc" classname="flex.ant.CompcTask" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+	<taskdef name="html-wrapper" classname="flex.ant.HtmlWrapperTask" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+	<taskdef name="asdoc" classname="flex.ant.AsDocTask" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+
+	<property name="PROJECT_DIR" value="C:/Developer/flex/projects/SwizConsole"/>
+	<property name="KAPLAB_ROOT" value="C:/Developer/flex/projects/KapDebug-sources"/>
+	<property name="SWIZ_ROOT" value="C:/Developer/flex/shared/swiz_git"/>
+	<property name="FLEXUNIT_ROOT" value="C:/Developer/IDE/Flex/FlashBuilder_45_307554/Adobe Flash Builder 4.5/eclipse/plugins/com.adobe.flexbuilder.flexunit_4.5.0.307554/flexunitframework"/>
+	<property name="SOURCE_DIR" value="${PROJECT_DIR}/src"/>
+	<property name="OUTPUT_DIR" value="${PROJECT_DIR}/release"/>
+	<property name="LOCALE" value="en_US"/>
+
+	<target name="build">
+		<antcall target="clean"/>
+		<antcall target="prepare"/>
+		<antcall target="compile"/>
+	</target>
+
+	<target name="clean">
+		<delete includeemptydirs="true">
+			<fileset dir="${OUTPUT_DIR}" includes="**/*"/>
+		</delete>
+	</target>
+	
+	<target name="prepare">
+		<replaceregexp file="${SOURCE_DIR}/org/swizframework/console/SwizConsoleVersion.as"
+		               match='VERSION_NUMBER : String = "(.*)"'
+		               replace='VERSION_NUMBER : String = "${CONSOLE_VERSION}"'
+		               byline="true" />
+	</target>
+
+	<target name="compile">
+		<compc output="${OUTPUT_DIR}/SwizConsole-v${CONSOLE_VERSION}.swc" debug="false" optimize="true">
+			
+			<source-path path-element="${SOURCE_DIR}"/>
+			<include-sources dir="${SOURCE_DIR}" includes="*"/>
+			
+			<external-library-path dir="${FLEX_HOME}/frameworks/libs" append="true">
+				<include name="*.swc" />
+            </external-library-path>
+            <external-library-path dir="${FLEX_HOME}/frameworks/libs/air" append="true">
+				<include name="*.swc" />
+            </external-library-path>
+			<external-library-path dir="${FLEX_HOME}/frameworks/libs/automation" append="true">
+				<include name="*.swc" />
+            </external-library-path>
+			<external-library-path dir="${FLEX_HOME}/frameworks/libs/mobile" append="true">
+				<include name="*.swc" />
+			</external-library-path>
+			<external-library-path dir="${FLEX_HOME}/frameworks/libs/mx" append="true">
+				<include name="*.swc" />
+			</external-library-path>
+			<external-library-path dir="${FLEX_HOME}/frameworks/libs/player" append="true">
+				<include name="*.swc" />
+			</external-library-path>			
+			<external-library-path dir="${FLEX_HOME}/frameworks/locale/${LOCALE}" append="true">
+				<include name="*.swc" />
+			</external-library-path>
+			<external-library-path file="${SWIZ_ROOT}/bin/swiz_git.swc" append="true"/>
+			
+			<library-path file="${PROJECT_DIR}/libs" append="true"/>
+			<library-path file="${KAPLAB_ROOT}/KapDebugComponents/bin/KapDebugComponents.swc" append="true"/>
+			<library-path file="${KAPLAB_ROOT}/KapITLogger/bin/KapITLogger.swc" append="true"/>
+			<library-path file="${KAPLAB_ROOT}/KapDebugIntrospection/bin/KapDebugIntrospection.swc" append="true"/>
+			
+			<define name="CONFIG::flex3" value="false"/>
+			<define name="CONFIG::flex4" value="true"/>
+		</compc>
+	</target>
+
+</project>

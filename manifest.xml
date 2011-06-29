@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<componentPackage>
+	
+	<component class="org.swizframework.console.processors.InspectableDispatcherProcessor" />
+	<component class="org.swizframework.console.processors.InspectableEventHandlerProcessor" />
+	<component class="org.swizframework.console.processors.InspectableInjectProcessor" />
+	<component class="org.swizframework.console.processors.InspectableMetadataProcessorArray" />
+	<component class="org.swizframework.console.processors.InspectablePostConstructProcessor" />
+	<component class="org.swizframework.console.processors.InspectablePreDestroyProcessor" />
+	<component class="org.swizframework.console.processors.InspectableSwizInterfaceProcessor" />
+	<component class="org.swizframework.console.processors.InspectableSwizProcessor" />
+	<component class="org.swizframework.console.logging.KapITSwizLoggingTarget" />
+	
+</componentPackage>

@@ -25,6 +25,9 @@ package org.swizframework.console.util
 		public static var INJECTIONS : ArrayCollection = new ArrayCollection();
 		
 		[Bindable]
+		public static var VIEW_MEDIATORS : ArrayCollection = new ArrayCollection();
+		
+		[Bindable]
 		public static var SWIZ_INSTANCES : ArrayCollection = new ArrayCollection();
 		
 		[Bindable]

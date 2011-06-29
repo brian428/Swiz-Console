@@ -37,9 +37,11 @@
 
 	<mx:Script>
 		<![CDATA[
-			import mx.managers.PopUpManager;
 			import fr.kapit.popup.AboutBox;
 			import fr.kapit.utils.ApplicationUtils;
+			
+			import mx.managers.PopUpManager;
+			
 			import org.swizframework.console.SwizConsoleVersion;
 
 			public function addCustomView( strName : String ) : void
@@ -66,7 +68,7 @@
 
 			private function onCreationComplete() : void
 			{
-				title = "Kap IT console for Swiz";
+				title = "Kap IT console for Swiz (version " + SwizConsoleVersion.VERSION_NUMBER + ")";
 			}
 		]]>
 	</mx:Script>

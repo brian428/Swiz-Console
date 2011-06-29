@@ -1,8 +1,10 @@
 package org.swizframework.console.view
 {
+	import fr.kapit.console.KapITUniversalInspector;
+	
 	import mx.controls.dataGridClasses.DataGridColumn;
 	import mx.core.ClassFactory;
-	import fr.kapit.console.KapITUniversalInspector;
+	
 	import org.swizframework.core.mxml.Swiz;
 
 	public class SwizInspector extends KapITUniversalInspector
@@ -28,7 +30,12 @@ package org.swizframework.console.view
 			injectionsView.label = "Injections";
 			injectionsView.toolTip = "Show the [Inject] tags which Swiz has set up.";
 			views.push( injectionsView );
-
+			
+			var viewMediatorView : ViewMediatorView = new ViewMediatorView();
+			viewMediatorView.label = "View Mediators";
+			viewMediatorView.toolTip = "Show the views which Swiz has passed to interested beans.";
+			views.push( viewMediatorView );
+			
 			var eventHandlerView : EventHandlerView = new EventHandlerView();
 			eventHandlerView.label = "EventHandlers";
 			eventHandlerView.toolTip = "Show the [EventHandler] tags which Swiz has set up.";

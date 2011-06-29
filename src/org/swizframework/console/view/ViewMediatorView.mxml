@@ -18,17 +18,12 @@
 			
 			private function displayNameLabelFunction( item : Object, column : DataGridColumn ) : String
 			{
-				return FormatUtils.formatUID( item.bean.source, 2, 3 );
-			}
-			
-			private function bindLabelFunction( item : Object, column : DataGridColumn ) : String
-			{
-				return item.changeWatcher is ChangeWatcher ? "Yes" : "No";
+				return FormatUtils.formatUID( item.bean, 2, 3 );
 			}
 			
 			private function onChange( event : ListEvent ) : void
 			{
-				var item : Object = injectionsGrid.selectedItem;
+				var item : Object = viewMediatorGrid.selectedItem;
 				if ( hasEventListener( "change" ) )
 				{
 					dispatchEvent( event.clone() );
@@ -37,7 +32,7 @@
 				
 				if ( item )
 				{
-					debugComponent.setRoot( item, "Inject Information" );
+					debugComponent.setRoot( item, "View Mediator Information" );
 				}
 			}
 			
@@ -45,24 +40,23 @@
 			{
 				InspectionLookup.INJECTIONS.refresh();
 			}
-
+			
 		]]>
 	</mx:Script>
 	
 	<containers:kHDividedBox height="100%" width="100%">
 		
-		<controls:kDataGrid id="injectionsGrid"
+		<controls:kDataGrid id="viewMediatorGrid"
 							height="100%"
 							width="60%"
-							dataProvider="{InspectionLookup.INJECTIONS}"
+							dataProvider="{InspectionLookup.VIEW_MEDIATORS}"
 							change="onChange( event )">
 			<controls:columns>
-				<mx:DataGridColumn labelFunction="displayNameLabelFunction" headerText="Injection Target" />
-				<mx:DataGridColumn dataField="asTag" headerText="Inject Tag" />
+				<mx:DataGridColumn labelFunction="displayNameLabelFunction" headerText="View Mediator" />
+				<mx:DataGridColumn dataField="asTag" headerText="Metadata Tag" />
 				<mx:DataGridColumn dataField="property" headerText="Property Name" />
 				<mx:DataGridColumn dataField="type" headerText="Property Type" />
-				<mx:DataGridColumn dataField="value" headerText="Injected Value" />
-				<mx:DataGridColumn labelFunction="bindLabelFunction" headerText="Binding?" width="60" />
+				<mx:DataGridColumn dataField="value" headerText="Mediated View" />
 			</controls:columns>
 		</controls:kDataGrid>
 		

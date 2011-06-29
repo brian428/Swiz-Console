@@ -137,11 +137,6 @@ package org.swizframework.console.processors
 					inspectionData.event = event;
 					inspectionData.callStack = new CallStack();
 					
-					/*if( InspectionLookup.EVENT_HANDLER_FLOW.length == 0 || InspectionLookup.EVENT_HANDLER_FLOW.getItemAt( InspectionLookup.EVENT_HANDLER_FLOW.length - 1 ) != inspectionData )
-					{
-						inspectionData.number = InspectionLookup.EVENT_HANDLER_FLOW.length + 1;
-						InspectionLookup.EVENT_HANDLER_FLOW.addItem( inspectionData );
-					}	*/
 					if( !InspectionLookup.EVENT_HANDLER_FLOW.contains( inspectionData ) )
 					{
 						inspectionData.number = InspectionLookup.EVENT_HANDLER_FLOW.length + 1;
@@ -149,8 +144,6 @@ package org.swizframework.console.processors
 					}	
 				}
 			}
-			
-			var temp : Boolean = true;
 		}
 	}
 }

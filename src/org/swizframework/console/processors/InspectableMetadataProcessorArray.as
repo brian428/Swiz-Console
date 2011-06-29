@@ -21,7 +21,8 @@ package org.swizframework.console.processors
 			push( new InspectablePreDestroyProcessor() );
 			push( new InspectableDispatcherProcessor() );
 			push( new InspectableSwizInterfaceProcessor() );
-			push( new InspectableSwizProcessor() )
+			push( new InspectableSwizProcessor() );
+			push( new InspectableViewProcessor() );
 		}
 	}
 }
