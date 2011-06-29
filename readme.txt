@@ -25,7 +25,7 @@ Next, modify your Swiz configuration to use the custom logger and processors:
 		<processors:InspectableMetadataProcessorArray />
 	</swiz:customProcessors>
 </swiz:Swiz>
-The custom Array is there as a convenience, to cover most situations. If you have your own custom processors in use already, just add all of the custom Swiz console processors (InspectableDispatcherProcessor, InspectableEventHandlerProcessor, InspectableInjectProcessor, InspectablePostConstructProcessor, InspectablePreDestroyProcessor, InspectableSwizInterfaceProcessor, and InspectableSwizProcessor) individually.
+The custom Array is there as a convenience, to cover most situations. If you have your own custom processors in use already, just add all of the custom Swiz console processors (InspectableDispatcherProcessor, InspectableEventHandlerProcessor, InspectableInjectProcessor, InspectablePostConstructProcessor, InspectablePreDestroyProcessor, InspectableSwizInterfaceProcessor, InspectableViewProcessor, and InspectableSwizProcessor) individually.
 
 Finally, add an onApplicationComplete handler and initialize the console:
 
